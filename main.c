@@ -10,7 +10,19 @@ void print(int result[], int F) {
 }
 
 void output(int result[], int F) {
-    //TODO
+    FILE * out;
+    int i;
+
+    if((out = fopen("output", "w")) == NULL) {
+        printf("Erreur ouverture fichier ! bis\n");
+        exit(-1);
+    }
+    
+    for(i=0; i<F; i++) {
+        fprintf(out, "%d", result[i]);
+    }
+
+    fclose(out);
 }
 
 int main(int argc, char const *argv[]) {
@@ -56,6 +68,7 @@ int main(int argc, char const *argv[]) {
     }
 
     print(result, duree);
+    output(result, duree);
 
     return 0;
 }
