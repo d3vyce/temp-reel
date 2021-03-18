@@ -9,6 +9,10 @@ void print(int result[], int F) {
     printf("\n");
 }
 
+void output(int result[], int F) {
+    //TODO
+}
+
 int main(int argc, char const *argv[]) {
     int i, nb_tache, duree;
     int * result;

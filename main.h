@@ -5,5 +5,4 @@
 #include "algo.h"
 
 void print(int result[], int F);
-
 void output(int result[], int F);
