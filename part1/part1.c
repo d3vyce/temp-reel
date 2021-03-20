@@ -34,7 +34,7 @@ int main(int argc, char const *argv[]) {
     /*Check argument*/
     if(argc != 4) {
         printf("Erreur argument !\n");
-        printf("Usage : ./main [FILE] [Algorithme] [Durée]\n");
+        printf("Usage : ./part1 [FILE] [Algorithme] [Durée]\n");
         exit(-1);
     }
 
