@@ -1,4 +1,4 @@
-#include "main.h"
+#include "part1.h"
 
 void print(int result[], int F) {
     int i;
