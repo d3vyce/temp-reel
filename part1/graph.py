@@ -3,7 +3,7 @@ import xlsxwriter
 f = open("output", "r")
 input = f.read()
 
-excel = xlsxwriter.Workbook('test.xlsx')
+excel = xlsxwriter.Workbook('graph.xlsx')
 excel_sheet = excel.add_worksheet()
 test_cell = excel.add_format()
 test_cell.set_bg_color('green')
