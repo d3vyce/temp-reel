@@ -5,6 +5,26 @@ int test_load(Taskset tache[]) {
     return 0;
 }
 
+int get_busy_period(Taskset tache[], int i) {
+    //TODO
+    return 0;
+}
+
+int get_nb_critical_job(Taskset tache[], int i, int bp) {
+    //TODO
+    return 0;
+}
+
+int get_responce_time(Taskset tache[], int i, int k) {
+    //TODO
+    return 0;
+}
+
+int get_worst_case_responce_time(Taskset tache[], int i) {
+    //TODO
+    return 0;
+}
+
 int main(int argc, char const *argv[]) {
     int i, nb_tache;
     Taskset * tache;
