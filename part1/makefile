@@ -1,13 +1,13 @@
 CC=gcc
 CFLAGS=-W -Wall -ansi -pedantic
 LDFLAGS=
-EXEC=main
-SRC= $(wildcard *.c)
+EXEC=part1
+SRC= $(wildcard *.c) $(wildcard **/*.c)
 OBJ= $(SRC:.c=.o)
 
 all: $(EXEC)
 
-main: $(OBJ)
+part1: $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 %.o: %.c sorted_job_list.h
@@ -16,7 +16,7 @@ main: $(OBJ)
 .PHONY: clean mrproper
 
 clean:
-	rm -rf *.o
+	rm -rf **/*.o
 
 mrproper: clean
 	rm -rf $(EXEC)
