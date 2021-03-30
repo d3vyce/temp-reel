@@ -20,7 +20,7 @@ temp_reel_groupe_3E/
 	|-- doc/
 	|   |-- user.pdf
 	|   `-- dev.pdf
-    |-- exemple/
+    	|-- exemple/
 	|   |-- test1
 	|   `-- test2
 	|-- part1/
@@ -56,7 +56,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```
 
 ### Xlsxwriter
-Cette extension est utiliser dans le fichier ```graph.py```, il permet de générer des fichiers excel. Pour l'installer utiliser la commande suivante :
+Cette extension est utilisé dans le fichier ```graph.py```, il permet de générer des fichiers excel. Pour l'installer utiliser la commande suivante :
 ```
 pip install --user xlsxwriter
 ```
@@ -69,26 +69,25 @@ cd part1 && make && make clean && cd ../
 cd part1 && make && make clean && cd ../
 ```
 
-Si tous s'est bien dérouler, un fichier exécutable  ```part1``` est apparue dans le dossier ```/Part1``` et un fichier exécutable ```part2``` est apparue dans le dossier ```/part2```.
+Si tout s'est bien dérouler, un fichier exécutable  ```part1``` est apparue dans le dossier ```/Part1``` et un fichier exécutable ```part2``` est apparue dans le dossier ```/part2```.
 
 ## Utilisation Part 1 : Visualisation d’un chronogramme
 ### Programme
-Pour executer le programme, il faut utiliser la commande suivante :
+Pour éxecuter le programme, il faut utiliser la commande suivante :
 ```
 ./part1/part1 [File] [Algorithme] [Duree]
 ```
 
 #### File
-Les fichiers utiliser par le programme sont situé dans le dossier exemple. Les fichiers sont constitué de deux élément :
+Les fichiers utilisés par le programme sont situé dans le dossier exemple. Les fichiers sont constitués de deux éléments :
 
 ```
 [nombre de tache]
 [Cn] [Dn] [Tn]
 ...
 ```
-:warning: Le nombre de tache doit être éguale au nombre de ligne suivante. 
-ex : si il y a 3 tâches, il doit y avoir 3 lignes en dessous avec la structure `[Cn] [Dn] [Tn]`.
-
+:warning: Le nombre de tâches doit être éguale au nombre de ligne suivante. 
+ex : s'il y a 3 tâches, il doit y avoir 3 lignes en dessous avec la structure `[Cn] [Dn] [Tn]`.
 
 exemple avec le fichier `test2` :
 
@@ -100,29 +99,25 @@ exemple avec le fichier `test2` :
 ```
 
 #### Algorithme
-Deux algoritme sont disponible :
+Deux algoritmes sont disponibles :
 - `edf` : 
 - `fp` :
 
 #### Durée
-Correspond au nombre d'unité de temps pour lequel le programme doit s'executer.
+Corresponds au nombre d'unité de temps pour lequel le programme doit s'exécuter.
 
 
-Exemple d'une commande d'execution :
-
-`./part1/part1 exemple/test2 edf 30`. Execute l'algoritme edf avec le fichier test2 pendants 30 unitée de temps.
+Exemple d'une commande d'exécution :
+`./part1/part1 exemple/test2 edf 30`. Execute l'algoritme edf avec le fichier test2 pendants 30 unités de temps.
 L'output de la commande devrait être le suivant :
 ```
 Algo EDF :
 1 1 2 2 2 3 3 3 3 3 1 1 2 2 2 1 1 3 3 3 3 3 1 1 2 2 2 3 1 1 
 ```
-Un fichier `output` est créer dans le même, ce fichier sera utiliser dans la partie suivante pour l'affichage graphique.
-
+Un fichier `output` est créé dans le même temps, ce fichier sera utilisé dans la partie suivante pour l'affichage graphique.
 
 ### Affichage graphique du résultat
-
-:warning: Avant de faire l'affichage graphique, il faut executer l'algorime et vérifier qu'un fichier `output` à bien été générer.
-
+:warning: Avant de faire l'affichage graphique, il faut exécuter l'algorime et vérifier qu'un fichier `output` à bien été générer.
 
 
 Pour générer l'affichage graphique, il faut utiliser la commande suivante :
@@ -131,8 +126,7 @@ python graph.py
 ```
 Cela devrait générer le fichier `graph.xlsx` qui représente de manière graphique l'output du programme.
 
-
-Si on prend le fichier `output` de l'exemple précédent, le fichier excel devrait ressembler a cela :
+Si on prend le fichier `output` de l'exemple précédent, le fichier excel devrait ressembler à cela :
 
 ![excel](https://nsa40.casimages.com/img/2021/03/21/210321020248858282.png)
 
