@@ -13,7 +13,7 @@ int test_load(Taskset tache[], int nb_tache) {
     
     if(result < borne) {
         return 1;
-    } else if (result < 1){
+    } else if (result <= 1){
         return 0;
     } else {
         return -1;
