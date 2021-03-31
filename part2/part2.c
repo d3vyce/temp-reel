@@ -10,8 +10,10 @@ int test_load(Taskset tache[], int nb_tache) {
     for(i = 0; i < nb_tache; i++) {
         result = result + (double)tache[i].Cn/(double)tache[i].Tn;
     }
+
+    printf("borne : %f      result : %f\n", borne, result);
     
-    if(result < borne) {
+    if(result <= borne) {
         return 1;
     } else if (result <= 1){
         return 0;
