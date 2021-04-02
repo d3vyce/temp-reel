@@ -53,15 +53,20 @@ int get_busy_period(Taskset tache[], int i) {
     int busy_period = 0, k, t = 30;
     
     for(k = 0; k <= i; k++) {
-        //printf("busy_period : %f %f, %d\n", (double)t/(double)tache[k].Tn, ceil((double)t/(double)tache[k].Tn), busy_period);
+        printf("busy_period : %f %f, %d\n", (double)t/(double)tache[k].Tn, ceil((double)t/(double)tache[k].Tn), busy_period);
         busy_period += (ceil((double)t/(double)tache[k].Tn))*tache[k].Cn;
     }
 
+    printf("Résultat de la fonction get_busy_period pour la tâche %d : %d \n", i, busy_period);
     return busy_period;
 }
 
 int get_nb_critical_job(Taskset tache[], int i, int bp) {
-    return ceil((double)bp/(double)tache[i].Tn);
+    int nb_critical_job = ceil((double)bp/(double)tache[i].Tn);
+
+    printf("Nombre d'instance de la tâche %d pendant la busy period  : %d \n\n", i, nb_critical_job);
+    
+    return nb_critical_job;
 }
 
 int get_responce_time(Taskset tache[], int i, int k) {
@@ -98,14 +103,10 @@ int main(int argc, char const *argv[]) {
     fclose(input);
 
     printf("Résultat de la fonction test_load : %d \n\n", test_load(tache, nb_tache));
-    printf("Résultat de la fonction get_busy_period pour la tâche 1 : %d \n", get_busy_period(tache, 0));
-    printf("Nombre d'instance de la tâche 1 pendant la busy period  : %d \n\n", get_nb_critical_job(tache, 0, get_busy_period(tache, 0)));
-    
-    printf("Résultat de la fonction get_busy_period pour la tâche 2 : %d \n", get_busy_period(tache, 1));
-    printf("Nombre d'instance de la tâche 2 pendant la busy period  : %d \n\n", get_nb_critical_job(tache, 1, get_busy_period(tache, 1)));
 
-    printf("Résultat de la fonction get_busy_period pour la tâche 3 : %d \n", get_busy_period(tache, 2));
-    printf("Nombre d'instance de la tâche 3 pendant la busy period  : %d \n\n", get_nb_critical_job(tache, 2, get_busy_period(tache, 2)));
+    get_nb_critical_job(tache, 0, get_busy_period(tache, 0));
+    get_nb_critical_job(tache, 1, get_busy_period(tache, 1));
+    get_nb_critical_job(tache, 2, get_busy_period(tache, 2));
 
     return 0;
 }
