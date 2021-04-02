@@ -50,13 +50,11 @@ int test_load(Taskset tache[], int nb_tache) {
 }
 
 int get_busy_period(Taskset tache[], int i) {
-    int busy_period = 0, a = 1, j;
-
-    busy_period = (1+(a/tache[i].Tn)*tache[i].Cn);
+    int busy_period = 0, k, t = 30;
     
-    for(j = 0; j < i; j++) {
-        printf("busy_period : %d\n", busy_period);
-        busy_period += (busy_period/tache[j].Tn)*tache[j].Cn;
+    for(k = 0; k <= i; k++) {
+        printf("busy_period : %f %f, %d\n", (double)t/(double)tache[k].Tn, ceil((double)t/(double)tache[k].Tn), busy_period);
+        busy_period += (ceil((double)t/(double)tache[k].Tn))*tache[k].Cn;
     }
 
     return busy_period;
@@ -100,8 +98,10 @@ int main(int argc, char const *argv[]) {
     }
     fclose(input);
 
-    printf("Résultat de la fonction test_load : %d \n", test_load(tache, nb_tache));
-    //printf("Résultat de la fonction get_busy_period pour la tâche 1 : %d \n", get_busy_period(tache, 0));
+    printf("Résultat de la fonction test_load : %d \n\n", test_load(tache, nb_tache));
+    printf("Résultat de la fonction get_busy_period pour la tâche 1 : %d \n\n", get_busy_period(tache, 0));
+    printf("Résultat de la fonction get_busy_period pour la tâche 2 : %d \n\n", get_busy_period(tache, 1));
+    printf("Résultat de la fonction get_busy_period pour la tâche 3 : %d \n\n", get_busy_period(tache, 2));
 
     return 0;
 }
