@@ -3,12 +3,39 @@
 int test_load(Taskset tache[], int nb_tache) {
     double borne;
     double result = 0;
-    int i;
+    int i, cases;
 
     borne = nb_tache*(pow(2,1.0/nb_tache)-1);
-
+    
     for(i = 0; i < nb_tache; i++) {
-        result = result + (double)tache[i].Cn/(double)tache[i].Tn;
+        if(tache[i].Dn <= tache[i].Tn) {
+            if(tache[i].Dn == tache[i].Tn) {
+                cases = 1;
+            } else {
+                cases = 2;
+            }
+        } else {
+            printf("Erreur : D%d n'est pas inférieur à T%d\n", i, i);
+            exit(-1);
+        }
+    }
+
+    if(cases == 1) {
+        printf("case 1\n"); // Case Di = Ti -> donc somme de Ci/Ti
+        for(i = 0; i < nb_tache; i++) {
+            result += (double)tache[i].Cn/(double)tache[i].Tn;
+        }
+    } else if (cases == 2) {
+        printf("case 2\n"); // Case Di != Ti -> vérification que les taches classées par échéances croissantes -> puis somme Ci/Di
+        for(i = 0; i < nb_tache-1; i++) {
+            if(tache[i].Dn > tache[i+1].Dn) {
+                printf("Les tâches ne sont pas classées par échéances croissantes\n");
+                exit(-1); //TODO auto tri par ordre échéances croissantes
+            }
+        }
+        for(i = 0; i < nb_tache; i++) {
+            result += (double)tache[i].Cn/(double)tache[i].Dn;
+        }
     }
 
     printf("borne : %f      result : %f\n", borne, result);
@@ -23,8 +50,16 @@ int test_load(Taskset tache[], int nb_tache) {
 }
 
 int get_busy_period(Taskset tache[], int i) {
-    //TODO
-    return 0;
+    int busy_period = 0, a = 1, j;
+
+    busy_period = (1+(a/tache[i].Tn)*tache[i].Cn);
+    
+    for(j = 0; j < i; j++) {
+        printf("busy_period : %d\n", busy_period);
+        busy_period += (busy_period/tache[j].Tn)*tache[j].Cn;
+    }
+
+    return busy_period;
 }
 
 int get_nb_critical_job(Taskset tache[], int i, int bp) {
@@ -66,6 +101,7 @@ int main(int argc, char const *argv[]) {
     fclose(input);
 
     printf("Résultat de la fonction test_load : %d \n", test_load(tache, nb_tache));
+    //printf("Résultat de la fonction get_busy_period pour la tâche 1 : %d \n", get_busy_period(tache, 0));
 
     return 0;
 }
