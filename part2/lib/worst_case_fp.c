@@ -1,4 +1,4 @@
-#include "worst_case.h"
+#include "worst_case_fp.h"
 
 int test_load(Taskset tache[], int nb_tache) {
     double borne, result = 0;
