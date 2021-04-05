@@ -23,7 +23,8 @@ col = 1
 for i in input:
     row = int(i)
     excel_sheet.write(0, col, col)
-    excel_sheet.write(row, col, "", test_cell)
+    if row != 0:
+        excel_sheet.write(row, col, "", test_cell)
     col = col+1
 
 excel.close()
