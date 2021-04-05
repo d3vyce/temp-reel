@@ -4,3 +4,5 @@
 #include <math.h>
 
 #include "worst_case.h"
+
+void compute(Taskset tache[], int nb_tache);
