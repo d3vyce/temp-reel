@@ -66,7 +66,7 @@ Pour compiler la partie 1 et 2, il faut utiliser la commande suivante :
 ```
 cd temp_reel_groupe_3E/
 cd part1 && make && make clean && cd ../
-cd part1 && make && make clean && cd ../
+cd part2 && make && make clean && cd ../
 ```
 
 Si tout s'est bien dérouler, un fichier exécutable  ```part1``` est apparue dans le dossier ```/Part1``` et un fichier exécutable ```part2``` est apparue dans le dossier ```/part2```.
