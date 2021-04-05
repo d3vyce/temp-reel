@@ -1,0 +1,8 @@
+.vscode/settings.json
+part2/part2
+part2/lib/part2.o
+part2/lib/worst_case.o
+part1/part1
+part1/lib/algo.o
+part1/lib/part1.o
+part1/lib/sorted_job_list.o
