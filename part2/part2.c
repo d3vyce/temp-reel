@@ -49,12 +49,16 @@ int test_load(Taskset tache[], int nb_tache) {
 }
 
 int get_busy_period(Taskset tache[], int i) {
-    int busy_period = 0, k, t = 30;
+    int busy_period = 0, k, t = 0;
     
-    for(k = 0; k <= i; k++) {
-        printf("busy_period : %f %f, %d\n", (double)t/(double)tache[k].Tn, ceil((double)t/(double)tache[k].Tn), busy_period);
-        busy_period += (ceil((double)t/(double)tache[k].Tn))*tache[k].Cn;
-    }
+    do {
+        busy_period = 0;
+        t++;
+        for(k = 0; k <= i; k++) {
+            busy_period += (ceil((double)t/(double)tache[k].Tn))*tache[k].Cn;
+            //printf("busy_period : %d, %d\n", t, busy_period);
+        }
+    } while (t != busy_period);
 
     printf("Résultat de la fonction get_busy_period pour la tâche %d : %d \n", i, busy_period);
     return busy_period;
