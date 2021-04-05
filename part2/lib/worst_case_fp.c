@@ -60,14 +60,14 @@ int get_busy_period(Taskset tache[], int i) {
         }
     } while (t != busy_period);
 
-    printf("Résultat de la fonction get_busy_period pour la tâche %d : %d \n", i, busy_period);
+    printf("Résultat de la fonction get_busy_period : %d \n", busy_period);
     return busy_period;
 }
 
 int get_nb_critical_job(Taskset tache[], int i, int bp) {
     int nb_critical_job = ceil((double)bp/(double)tache[i].Tn);
 
-    printf("Nombre d'instance de la tâche %d pendant la busy period  : %d \n", i, nb_critical_job);
+    printf("Nombre d'instance pendant la busy period  : %d \n", nb_critical_job);
     
     return nb_critical_job;
 }
@@ -75,7 +75,7 @@ int get_nb_critical_job(Taskset tache[], int i, int bp) {
 int get_responce_time(Taskset tache[], int i, int k) {
     int responce_time, date_terminaison = 0, date_terminaisonbis, date_activation, t = 0, xxx = 1, j;
 
-    while(date_terminaison != date_terminaisonbis || date_terminaison < tache[i].Dn) {
+    //while(date_terminaison != date_terminaisonbis || date_terminaison < tache[i].Dn) {
         date_terminaisonbis = date_terminaison;
         date_terminaison = tache[i].Cn;
         for(j = 0; j < i; j++) {
@@ -83,7 +83,7 @@ int get_responce_time(Taskset tache[], int i, int k) {
         }
         printf("%d, %d, %d\n", date_terminaison, date_terminaisonbis, t);
         t++;
-    }
+    //}
     /*
     date_activation = tache[i].Tn*(k-1);
     responce_time = date_terminaison - date_activation;

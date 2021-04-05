@@ -5,7 +5,7 @@ void compute(Taskset tache[], int nb_tache) {
 
     for(i=0; i < nb_tache; i++) {
         printf("Tache %d :\n", i+1);
-        printf("Pire temps de réponse pour la tâche %d : %d \n\n", 1, get_worst_case_responce_time(tache, i));
+        printf("Pire temps de réponse : %d \n\n", get_worst_case_responce_time(tache, i));
     }
 }
 
@@ -34,9 +34,13 @@ int main(int argc, char const *argv[]) {
 
     printf("Résultat de la fonction test_load : %d \n\n", test_load(tache, nb_tache));
 
+    /*
     get_nb_critical_job(tache, 0, get_busy_period(tache, 0));
     get_nb_critical_job(tache, 1, get_busy_period(tache, 1));
     get_nb_critical_job(tache, 2, get_busy_period(tache, 2));
+    */
+
+    compute(tache, nb_tache);
 
     return 0;
 }
