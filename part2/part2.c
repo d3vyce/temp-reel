@@ -1,8 +1,7 @@
 #include "part2.h"
 
 int test_load(Taskset tache[], int nb_tache) {
-    double borne;
-    double result = 0;
+    double borne, result = 0;
     int i, cases;
 
     borne = nb_tache*(pow(2,1.0/nb_tache)-1);
@@ -64,19 +63,45 @@ int get_busy_period(Taskset tache[], int i) {
 int get_nb_critical_job(Taskset tache[], int i, int bp) {
     int nb_critical_job = ceil((double)bp/(double)tache[i].Tn);
 
-    printf("Nombre d'instance de la tâche %d pendant la busy period  : %d \n\n", i, nb_critical_job);
+    printf("Nombre d'instance de la tâche %d pendant la busy period  : %d \n", i, nb_critical_job);
     
     return nb_critical_job;
 }
 
 int get_responce_time(Taskset tache[], int i, int k) {
-    //TODO
-    return 0;
+    int responce_time, date_terminaison = 0, date_terminaisonbis, date_activation, t = 0, xxx = 1, j;
+
+    while(date_terminaison != date_terminaisonbis || date_terminaison < tache[i].Dn) {
+        date_terminaisonbis = date_terminaison;
+        date_terminaison = tache[i].Cn;
+        for(j = 0; j < i; j++) {
+            date_terminaison += (ceil((double)t/(double)tache[j].Tn))*tache[j].Cn+tache[i].Cn;
+        }
+        printf("%d, %d, %d\n", date_terminaison, date_terminaisonbis, t);
+        t++;
+    }
+    
+    //date_activation = tache[i].Tn*(k-1);
+    //responce_time = date_terminaison - date_activation;
+
+    //printf("Date de terminaison : %d, date d'activation : %d -> %d\n", date_terminaison, date_activation, responce_time);
+
+    return 1;
 }
 
 int get_worst_case_responce_time(Taskset tache[], int i) {
-    //TODO
-    return 0;
+    int nb_critical_time, j, worst_case_responce_time = 0, tempo;
+
+    nb_critical_time = get_nb_critical_job(tache, i, get_busy_period(tache, i));
+
+    for(j = 1; j <= nb_critical_time; j++) {
+        tempo = get_responce_time(tache, i, j);
+        if(worst_case_responce_time < tempo) {
+            worst_case_responce_time = tempo;
+        }
+    }
+
+    return worst_case_responce_time;
 }
 
 int main(int argc, char const *argv[]) {
@@ -104,9 +129,21 @@ int main(int argc, char const *argv[]) {
 
     printf("Résultat de la fonction test_load : %d \n\n", test_load(tache, nb_tache));
 
+    
     get_nb_critical_job(tache, 0, get_busy_period(tache, 0));
     get_nb_critical_job(tache, 1, get_busy_period(tache, 1));
     get_nb_critical_job(tache, 2, get_busy_period(tache, 2));
+
+    /*
+    get_responce_time(tache, 2, 1);
+    get_responce_time(tache, 2, 2);
+    get_responce_time(tache, 2, 3);
+    */
+
+    //printf("Pire temps de réponse pour la tâche %d : %d \n\n", 1, get_worst_case_responce_time(tache, 0));
+    //printf("Pire temps de réponse pour la tâche %d : %d \n\n", 2, get_worst_case_responce_time(tache, 1));
+    //printf("Pire temps de réponse pour la tâche %d : %d \n\n", 3, get_worst_case_responce_time(tache, 2));
+
 
     return 0;
 }
