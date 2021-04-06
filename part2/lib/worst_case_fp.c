@@ -12,6 +12,7 @@ int test_load(Taskset tache[], int nb_tache) {
                 cases = 1;
             } else {
                 cases = 2;
+                break;
             }
         } else {
             printf("Erreur : D%d n'est pas inférieur à T%d\n", i, i);
@@ -70,7 +71,7 @@ int get_nb_critical_job(Taskset tache[], int i, int bp) {
     return nb_critical_job;
 }
 
-int get_responce_time(Taskset tache[], int i, int k) {
+int get_responce_time(Taskset tache[], int i, int k) {  
     int date_activation, date_terminaison = 1, t = 0, j;
 
     date_activation = (k-1)*tache[i].Tn;
