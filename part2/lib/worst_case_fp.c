@@ -20,12 +20,12 @@ int test_load(Taskset tache[], int nb_tache) {
     }
 
     if(cases == 1) {
-        printf("case 1\n"); /* Case Di = Ti -> donc somme de Ci/Ti */
+        /* Case Di = Ti -> donc somme de Ci/Ti */
         for(i = 0; i < nb_tache; i++) {
             result += (double)tache[i].Cn/(double)tache[i].Tn;
         }
     } else if (cases == 2) {
-        printf("case 2\n"); /* Case Di != Ti -> vérification que les taches classées par échéances croissantes -> puis somme Ci/Di */
+        /* Case Di != Ti -> vérification que les taches classées par échéances croissantes -> puis somme Ci/Di */
         for(i = 0; i < nb_tache-1; i++) {
             if(tache[i].Dn > tache[i+1].Dn) {
                 printf("Les tâches ne sont pas classées par échéances croissantes\n");
@@ -37,8 +37,6 @@ int test_load(Taskset tache[], int nb_tache) {
         }
     }
 
-    printf("borne : %f      result : %f\n", borne, result);
-    
     if(result <= borne) {
         return 1;
     } else if (result <= 1){
@@ -73,24 +71,21 @@ int get_nb_critical_job(Taskset tache[], int i, int bp) {
 }
 
 int get_responce_time(Taskset tache[], int i, int k) {
-    int responce_time, date_terminaison = 0, date_terminaisonbis, date_activation, t = 0, xxx = 1, j;
+    int date_activation, date_terminaison = 1, t = 0, j;
 
-    //while(date_terminaison != date_terminaisonbis || date_terminaison < tache[i].Dn) {
-        date_terminaisonbis = date_terminaison;
-        date_terminaison = tache[i].Cn;
+    date_activation = (k-1)*tache[i].Tn;
+
+    while(t != date_terminaison) {
+        t = date_terminaison;
+        date_terminaison = 0;
+
         for(j = 0; j < i; j++) {
-            date_terminaison += (ceil((double)t/(double)tache[j].Tn))*tache[j].Cn+tache[i].Cn;
+            date_terminaison += (ceil((double)t/(double)tache[j].Tn))*tache[j].Cn;
         }
-        printf("%d, %d, %d\n", date_terminaison, date_terminaisonbis, t);
-        t++;
-    //}
-    /*
-    date_activation = tache[i].Tn*(k-1);
-    responce_time = date_terminaison - date_activation;
+        date_terminaison += k*tache[i].Cn;
+    }
 
-    printf("Date de terminaison : %d, date d'activation : %d -> %d\n", date_terminaison, date_activation, responce_time);
-    */
-    return 1;
+    return date_terminaison-date_activation;
 }
 
 int get_worst_case_responce_time(Taskset tache[], int i) {
