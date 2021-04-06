@@ -6,7 +6,7 @@ Pour récupérer le programme depuis github vous avez deux solutions :
 - Soit par ce [lien](https://github.com/d3vyce/temp_reel). Il faut ensuite cliquer sur ```code``` puis ```Download ZIP```.
 - Soit par commande dans le terminal avec la commande suivante :
 ```
-wget https://github.com/d3vyce/temp_reel
+gh repo clone d3vyce/temp_reel
 ```
 
 ### Décompression du fichier
