@@ -34,12 +34,6 @@ int main(int argc, char const *argv[]) {
 
     printf("Résultat de la fonction test_load : %d \n\n", test_load(tache, nb_tache));
 
-    /*
-    get_nb_critical_job(tache, 0, get_busy_period(tache, 0));
-    get_nb_critical_job(tache, 1, get_busy_period(tache, 1));
-    get_nb_critical_job(tache, 2, get_busy_period(tache, 2));
-    */
-
     compute(tache, nb_tache);
 
     return 0;
