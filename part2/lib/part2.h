@@ -5,4 +5,4 @@
 
 #include "worst_case_fp.h"
 
-void compute(Taskset tache[], int nb_tache);
+void compute(Taskset tache[], int nb_tache, int code);
