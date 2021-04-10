@@ -6,7 +6,7 @@ Pour récupérer le programme depuis github vous avez deux solutions :
 - Soit par ce [lien](https://github.com/d3vyce/temp_reel). Il faut ensuite cliquer sur ```code``` puis ```Download ZIP```.
 - Soit par commande dans le terminal avec la commande suivante :
 ```
-wget https://github.com/d3vyce/temp_reel
+gh repo clone d3vyce/temp_reel
 ```
 
 ### Décompression du fichier
@@ -132,7 +132,35 @@ Si on prend le fichier `output` de l'exemple précédent, le fichier excel devra
 
 
 ## Utilisation Part 2
-//TODO
+### Programme
+Pour exécuter le programme, il faut utiliser la commande suivante :
+```
+./part2/part2 [File]
+```
+#### File
+Les fichiers ont la même structure que pour la partie 1. Des fichiers exemple sont dans le dossier `exemple`.
 
-## Bug repport
-//TODO
+### Exemple d'une commande d'exécution
+
+`./part2/part2 exemple/test2`. 
+```
+Résultat de la fonction test_load : 1 
+
+Tache 1 :
+Résultat de la fonction get_busy_period : 2 
+Nombre d'instances pendant la busy period  : 1 
+Pire temps de réponse : 2 
+
+Tache 2 :
+Résultat de la fonction get_busy_period : 5 
+Nombre d'instances pendant la busy period  : 1 
+Pire temps de réponse : 5 
+
+Tache 3 :
+Résultat de la fonction get_busy_period : 39 
+Nombre d'instances pendant la busy period  : 3 
+Pire temps de réponse : 17
+
+```
+## Bug report
+Pas de bug
