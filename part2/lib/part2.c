@@ -8,7 +8,7 @@ void compute(Taskset tache[], int nb_tache, int code) {
         if(code == 1) {
             printf("Pire temps de réponse (non preemptive): %d \n\n", get_worst_case_responce_time(tache, i));
         } else if(code == 2) {
-            printf("Pire temps de réponse (preemptive): %d \n\n", get_worst_case_responce_time_preemptive(tache, i));
+            printf("Pire temps de réponse (preemptive): %d \n\n", get_worst_case_responce_time_preemptive(tache, i, nb_tache));
         } else {
             printf("Erreur code (code dispo : 1, 2)\n");
             exit(-1);

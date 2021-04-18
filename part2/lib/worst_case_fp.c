@@ -103,3 +103,42 @@ int get_worst_case_responce_time(Taskset tache[], int i) {
 
     return worst_case_responce_time;
 }
+
+int get_responce_time_preemptive(Taskset tache[], int i, int k, int nb_tache) {
+    int date_activation, date_terminaison = 1, t = 0, j, max = tache[i].Cn;
+
+    date_activation = (k-1)*tache[i].Tn;
+
+    for(j = 0; j < nb_tache; j++) {
+        if(max < tache[j].Cn) {
+            max = tache[j].Cn;
+        }
+    }
+
+    while(t != date_terminaison) {
+        t = date_terminaison;
+        date_terminaison = 0;
+
+        for(j = 0; j < i; j++) {
+            date_terminaison += (ceil((double)t+1/(double)tache[j].Tn))*tache[j].Cn;
+        }
+        date_terminaison += k*tache[i].Cn+max;
+    }
+
+    return date_terminaison-date_activation;
+}
+
+int get_worst_case_responce_time_preemptive(Taskset tache[], int i, int nb_tache) {
+    int nb_critical_time, j, worst_case_responce_time_preemptive = 0, tempo;
+
+    nb_critical_time = get_nb_critical_job(tache, i, get_busy_period(tache, i));
+
+    for(j = 1; j <= nb_critical_time; j++) {
+        tempo = get_responce_time_preemptive(tache, i, j, nb_tache);
+        if(worst_case_responce_time_preemptive < tempo) {
+            worst_case_responce_time_preemptive = tempo;
+        }
+    }
+
+    return worst_case_responce_time_preemptive;
+}
