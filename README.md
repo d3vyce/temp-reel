@@ -1,4 +1,4 @@
-# temp_reel
+# temp-reel
 Intégration d'un système temps réel en C.
 
 ## Récupération du programme
