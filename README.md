@@ -1,6 +1,7 @@
 # temp_reel
+Intégration d'un système temps réel en C.
 
-## Récuparation du programme
+## Récupération du programme
 ### Depuis Github
 Pour récupérer le programme depuis github vous avez deux solutions :
 - Soit par ce [lien](https://github.com/d3vyce/temp_reel). Il faut ensuite cliquer sur ```code``` puis ```Download ZIP```.
